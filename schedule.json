@@ -1,0 +1,95 @@
+{
+    "schedule": [
+        {
+            "class": "AP Computer Science A",
+            "teacher": "Rehwinkel",
+            "room": "A234",
+            "period": 1,
+            "days": [
+                "A",
+                "B",
+                "C",
+                "E",
+                "F"
+            ]
+        },
+        {
+            "class": "Gym/Health",
+            "teacher": "Scalzo",
+            "room": "Gym/C130",
+            "period": 2,
+            "days": [
+                "A",
+                "B",
+                "D",
+                "E",
+                "F"
+            ]
+        },
+        {
+            "class": "Honors Cybersecurity & Computer Programming",
+            "teacher": "Rehwinkel",
+            "room": "A234",
+            "period": 3,
+            "days": [
+                "A",
+                "C",
+                "D",
+                "E",
+                "G"
+            ]
+        },
+        {
+            "class": "English 4",
+            "teacher": "Reganato/Campisano",
+            "room": "E117",
+            "period": 4,
+            "days": [
+                "B",
+                "C",
+                "D",
+                "F",
+                "G"
+            ]
+        },
+        {
+            "class": "Honors Band 3",
+            "teacher": "Ippolito",
+            "room": "C103",
+            "period": 5,
+            "days": [
+                "A",
+                "B",
+                "D",
+                "E",
+                "G"
+            ]
+        },
+        {
+            "class": "AP Calculus AB",
+            "teacher": "Nesi",
+            "room": "A217",
+            "period": 6,
+            "days": [
+                "A",
+                "B",
+                "D",
+                "E",
+                "F"
+            ]
+        },
+        {
+            "class": "Honors NJIT IS219 Advanced Website Development WDP",
+            "teacher": "Kilgore",
+            "room": "B111",
+            "period": 7,
+            "days": [
+                "B",
+                "C",
+                "E",
+                "F",
+                "G"
+            ]
+        }
+    ]
+}
