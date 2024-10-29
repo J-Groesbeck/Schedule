@@ -73,7 +73,7 @@ function renderHTML() {
             let i = 1;
             daySchedule.forEach(element => {
                 const time = bellSchedule[i];
-                if(i === 4) {
+                if (i === 4) {
                     let lunchRow = `
                     <tr id="lunchRow">
                         <td>12:00 PM to 12:35 PM</td>
@@ -140,3 +140,36 @@ function addToArray(period, info) {
         classArray = [];
     }
 }
+
+function parseTime(timeStr) {
+    const today = new Date();
+    const [time, period] = timeStr.split(' ');
+    const [hours, minutes] = time.split(':');
+    let hour = parseInt(hours, 10);
+    if (period === 'PM' && hour !== 12) hour += 12;
+    if (period === 'AM' && hour === 12) hour = 0;
+    return new Date(today.getFullYear(), today.getMonth(), today.getDate(), hour, parseInt(minutes, 10));
+}
+
+function currentClass() {
+    let currentTime = new Date();
+    
+    for (let i = 1; i <= 5; i++) {
+        let startTime = parseTime(bellSchedule[i].start);
+        let endTime = parseTime(bellSchedule[i].end);
+        if (currentTime >= startTime && currentTime <= endTime) {
+            $(`#row${i}`).children().addClass('bg-yellow');
+            return;
+        }
+    }
+    
+    let lunchStart = parseTime('12:00 PM');
+    let lunchEnd = parseTime('12:35 PM');
+    if (currentTime >= lunchStart && currentTime <= lunchEnd) {
+        $('#lunchRow').children().addClass('bg-yellow');
+    }
+}
+setTimeout(() => {
+    currentClass()
+}, 1000);
+setInterval(() => currentClass(), 60000);
