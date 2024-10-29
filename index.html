@@ -7,17 +7,13 @@
     <title>Where Should I Be Right Now?</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
     <div class="container">
-        <h1 class="text-center">Where Should I Be Right Now?</h1>
+        <h1 class="text-center mb-3">Where Should I Be Right Now?</h1>
 
-        <div class="form-group">
-            <label for="dayInput">Select Day (A-G):</label>
-            <input type="text" id="dayInput" class="form-control" placeholder="Enter a day (A-G)">
-            <button id="submitDay" class="btn btn-primary mt-2">Show Schedule</button>
-        </div>
+        <h2 class="text-center" id="letterDay"></h2>
         <div class="schedule">
-            <h3 class="text-center">Your Schedule for the Day</h3>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -31,8 +27,13 @@
                 <tbody id="scheduleList"></tbody>
             </table>
         </div>
+        <div class="text-center">
+            <button id="changeLetter" class="btn btn-primary mt-2">If the letter day is incorrect, click here to update
+                it</button>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
