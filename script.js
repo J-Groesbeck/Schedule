@@ -73,9 +73,20 @@ function renderHTML() {
             let i = 1;
             daySchedule.forEach(element => {
                 const time = bellSchedule[i];
+                if(i === 4) {
+                    let lunchRow = `
+                    <tr id="lunchRow">
+                        <td>12:00 PM to 12:35 PM</td>
+                        <td></td>
+                        <td>Lunch</td>
+                        <td></td>
+                        <td></td>
+                    </tr>`
+                    $('#scheduleList').append(lunchRow);
+                }
                 let htmlString = `
                 <tr id="row${i}">
-                <td>${time.start} to ${time.end}</td>
+                    <td>${time.start} to ${time.end}</td>
                 </tr>
                 `;
                 $('#scheduleList').append(htmlString);
