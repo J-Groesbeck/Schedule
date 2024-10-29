@@ -11,37 +11,42 @@ const bellSchedule = {
 let startDate = new Date('2024-10-24');
 let startDayLetter = 'D';
 let letterDay;
+const today = new Date();
 
 function getLetterDay() {
-    if (localStorage.getItem('savedDate') && localStorage.getItem('savedLetter')) {
-        startDate = new Date(localStorage.getItem('savedDate'));
-        startDayLetter = localStorage.getItem('savedLetter');
+    if (today.getDay() === 0 || today.getDay() === 6) {
+        $('#letterDay').text(`It's the Weekend! Relax! Check again on Monday.`);
+        $('#changeLetter').hide()
     } else {
-        startDate = new Date('2024-10-24');
-        startDayLetter = 'D';
-    }
-
-    const daysOfWeek = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
-    const dayIndex = daysOfWeek.indexOf(startDayLetter);
-
-    const today = new Date();
-    let weekdaysCount = 0;
-    let weekendCount = 0
-
-    while (startDate < today) {
-        if (startDate.getDay() !== 0 && startDate.getDay() !== 6) {
-            weekdaysCount++;
-        } else if (startDate.getDay() === 0) {
-            weekendCount++
+        if (localStorage.getItem('savedDate') && localStorage.getItem('savedLetter')) {
+            startDate = new Date(localStorage.getItem('savedDate'));
+            startDayLetter = localStorage.getItem('savedLetter');
+        } else {
+            startDate = new Date('2024-10-24');
+            startDayLetter = 'D';
         }
-        startDate.setDate(startDate.getDate() + 1);
+
+        const daysOfWeek = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+        const dayIndex = daysOfWeek.indexOf(startDayLetter);
+
+        let weekdaysCount = 0;
+        let weekendCount = 0
+
+        while (startDate < today) {
+            if (startDate.getDay() !== 0 && startDate.getDay() !== 6) {
+                weekdaysCount++;
+            } else if (startDate.getDay() === 0) {
+                weekendCount++
+            }
+            startDate.setDate(startDate.getDate() + 1);
+        }
+
+        weekdaysCount -= weekendCount;
+
+        letterDay = daysOfWeek[(dayIndex + weekdaysCount) % daysOfWeek.length];
+        $('#letterDay').text(`Today is a ${letterDay} day, here's your schedule:`);
+        renderHTML();
     }
-
-    weekdaysCount -= weekendCount;
-
-    letterDay = daysOfWeek[(dayIndex + weekdaysCount) % daysOfWeek.length];
-    $('#letterDay').text(`Today is a ${letterDay} day, here's your schedule:`);
-    renderHTML();
 }
 getLetterDay();
 
@@ -153,7 +158,7 @@ function parseTime(timeStr) {
 
 function currentClass() {
     let currentTime = new Date();
-    
+
     for (let i = 1; i <= 5; i++) {
         let startTime = parseTime(bellSchedule[i].start);
         let endTime = parseTime(bellSchedule[i].end);
@@ -162,7 +167,7 @@ function currentClass() {
             return;
         }
     }
-    
+
     let lunchStart = parseTime('12:00 PM');
     let lunchEnd = parseTime('12:35 PM');
     if (currentTime >= lunchStart && currentTime <= lunchEnd) {
