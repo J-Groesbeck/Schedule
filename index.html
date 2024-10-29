@@ -11,27 +11,31 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <h1 class="text-center mb-3">Where Should I Be Right Now?</h1>
-
         <h2 class="text-center" id="letterDay"></h2>
-        <div class="schedule">
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Time</th>
-                        <th>Period</th>
-                        <th>Class</th>
-                        <th>Teacher</th>
-                        <th>Room</th>
-                    </tr>
-                </thead>
-                <tbody id="scheduleList"></tbody>
-            </table>
+        <div class="row">
+            <div class="schedule col-12">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Period</th>
+                            <th>Class</th>
+                            <th>Teacher</th>
+                            <th>Room</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleList"></tbody>
+                </table>
+            </div>
         </div>
-        <div class="text-center">
-            <button id="changeLetter" class="btn btn-primary mt-2">If the letter day is incorrect, click here to update
-                it</button>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button id="changeLetter" class="btn btn-primary mt-2">If the letter day is incorrect, click here to
+                    update
+                    it</button>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

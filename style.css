@@ -1,3 +1,7 @@
+* {
+    font-size: 1;
+}
+
 .bg-yellow {
     background-color: #fffc04 !important;
     --bs-table-bg-type: #fffc04 !important;
