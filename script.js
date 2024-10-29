@@ -26,17 +26,18 @@ function getLetterDay() {
 
     const today = new Date();
     let weekdaysCount = 0;
+    let weekendCount = 0
 
     while (startDate < today) {
         if (startDate.getDay() !== 0 && startDate.getDay() !== 6) {
             weekdaysCount++;
+        } else if (startDate.getDay() === 0) {
+            weekendCount++
         }
         startDate.setDate(startDate.getDate() + 1);
     }
 
-    if (startDate.getDay() !== 0 && startDate.getDay() !== 6) {
-        weekdaysCount--;  // Subtract the last increment if it overshot
-    }
+    weekdaysCount -= weekendCount;
 
     letterDay = daysOfWeek[(dayIndex + weekdaysCount) % daysOfWeek.length];
     $('#letterDay').text(`Today is a ${letterDay} day, here's your schedule:`);
