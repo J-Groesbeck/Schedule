@@ -12,6 +12,8 @@ let startDate = new Date('2024-10-24');
 let startDayLetter = 'D';
 let letterDay;
 const today = new Date();
+const daysOfWeek = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+let calledManually = false
 
 function getLetterDay() {
     if (today.getDay() === 0 || today.getDay() === 6) {
@@ -26,7 +28,6 @@ function getLetterDay() {
             startDayLetter = 'D';
         }
 
-        const daysOfWeek = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
         const dayIndex = daysOfWeek.indexOf(startDayLetter);
 
         let weekdaysCount = 0;
@@ -38,16 +39,20 @@ function getLetterDay() {
             startDate.setDate(startDate.getDate() + 1);
         }
 
+        if(!calledManually) {
         weekdaysCount--
+        }
 
         letterDay = daysOfWeek[(dayIndex + weekdaysCount) % daysOfWeek.length];
         $('#letterDay').text(`Today is a ${letterDay} day, here's your schedule:`);
         renderHTML();
+        calledManually = false
     }
 }
 getLetterDay();
 
 $('#changeLetter').on('click', function () {
+    calledManually = true
     const letter = prompt("Enter a letter (A-G):").toUpperCase();
 
     if (!['A', 'B', 'C', 'D', 'E', 'F', 'G'].includes(letter)) {
@@ -101,6 +106,7 @@ function renderHTML() {
                 addToArray(element.period, htmlString2);
                 i++;
             });
+        currentClass()
         },
         error: function () {
             alert('Error occurred while retrieving data, please reload the page and try again.');
